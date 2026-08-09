@@ -10,6 +10,8 @@ from collections.abc import Sequence
 from typing import Any
 
 import numpy as np
+from sklearn.metrics import cohen_kappa_score
+from sklearn.metrics import mean_absolute_error as sklearn_mean_absolute_error
 
 
 def _is_missing(value: Any) -> bool:
@@ -40,10 +42,10 @@ def _paired_values(
 
 
 def mean_absolute_error(reference: Sequence[Any], estimate: Sequence[Any]) -> float:
-    """Return mean absolute error over non-missing pairs."""
+    """Return scikit-learn's mean absolute error over non-missing pairs."""
 
     true_values, pred_values = _paired_values(reference, estimate)
-    return float(np.mean(np.abs(true_values - pred_values)))
+    return float(sklearn_mean_absolute_error(true_values, pred_values))
 
 
 def mean_signed_error(reference: Sequence[Any], estimate: Sequence[Any]) -> float:
@@ -64,7 +66,11 @@ def quadratic_weighted_kappa(
     min_rating: int = 0,
     max_rating: int = 4,
 ) -> float:
-    """Compute quadratic weighted Cohen's kappa over non-missing pairs."""
+    """Return scikit-learn's quadratic weighted Cohen's kappa.
+
+    Missing pairs are removed before delegating to
+    :func:`sklearn.metrics.cohen_kappa_score`.
+    """
 
     if max_rating <= min_rating:
         raise ValueError("max_rating must be greater than min_rating")
@@ -85,23 +91,16 @@ def quadratic_weighted_kappa(
     ):
         raise ValueError("ratings fall outside the requested range")
 
-    n_ratings = max_rating - min_rating + 1
-    observed = np.zeros((n_ratings, n_ratings), dtype=float)
-    for true_rating, pred_rating in zip(true_ratings, pred_ratings, strict=True):
-        observed[true_rating - min_rating, pred_rating - min_rating] += 1
-
-    true_hist = observed.sum(axis=1)
-    pred_hist = observed.sum(axis=0)
-    expected = np.outer(true_hist, pred_hist) / observed.sum()
-
-    indices = np.arange(n_ratings)
-    weights = ((indices[:, None] - indices[None, :]) / (n_ratings - 1)) ** 2
-    observed_disagreement = float(np.sum(weights * observed))
-    expected_disagreement = float(np.sum(weights * expected))
-
-    if expected_disagreement == 0:
-        return 1.0 if observed_disagreement == 0 else float("nan")
-    return 1.0 - observed_disagreement / expected_disagreement
+    if np.array_equal(true_ratings, pred_ratings):
+        return 1.0
+    return float(
+        cohen_kappa_score(
+            true_ratings,
+            pred_ratings,
+            labels=np.arange(min_rating, max_rating + 1),
+            weights="quadratic",
+        )
+    )
 
 
 def exact_string_match_rate(

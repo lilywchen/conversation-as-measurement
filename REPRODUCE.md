@@ -115,6 +115,8 @@ value printed in the paper. The comparison file identifies every mismatched cell
 - Sequence profiles use K-means with `K=4`, `random_state=0`, and `n_init="auto"`.
 - `VHI`, `CSI`, and `EAT` are displayed as Voice, Cough, and Swallowing.
 - PROM missingness uses every PROM item row.
+- QWK uses `sklearn.metrics.cohen_kappa_score` with quadratic weights; MAE uses
+  `sklearn.metrics.mean_absolute_error`.
 - QWK, MAE, and signed error exclude pairs where either score is missing.
 - Half-point patient scores are rounded upward for QWK only.
 - MAE and signed error use the original, unrounded patient score.
