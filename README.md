@@ -1,6 +1,6 @@
-# 🩺 Conversation as Measurement
+# 📏 Conversation as Measurement
 
-Code accompanying the COLM 2026 paper:
+🩺 Code accompanying the COLM 2026 paper:
 
 **“Conversation as Measurement in Clinical Encounters: Observable Phase Structure,
 Partially Observable Patient State.”**
