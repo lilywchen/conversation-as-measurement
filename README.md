@@ -15,7 +15,7 @@ generates the main PROM table and all five data-driven figures.
 
 ## 🚀 Quick start
 
-Python 3.10 or newer is required.
+Python 3.10 or 3.11 is required for the locked reproduction environment.
 
 ```bash
 cd /path/to/conversation-as-measurement
@@ -37,6 +37,10 @@ conversation-measurement-reproduce \
 ```
 
 CSV, Parquet, and Feather inputs are supported.
+
+Paper-value verification is enabled by default. When applying the pipeline to a
+different dataset, append `--no-verify-published`; the figures and tables will still be
+generated, but differing PROM values will not stop the command.
 
 ## 📥 Expected inputs
 

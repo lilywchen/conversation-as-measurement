@@ -50,6 +50,10 @@ conversation-measurement-reproduce \
   --output "/PRIVATE/PATH/reproduced_outputs"
 ```
 
+This command verifies the main PROM table against the paper by default. For a different
+dataset, append `--no-verify-published` to generate the outputs without requiring its
+PROM values to match the paper.
+
 CSV, Parquet, and Feather DataFrames are supported. Parquet and Feather require a
 pandas-compatible engine such as `pyarrow`. Do not place private inputs inside the
 GitHub repository.
@@ -60,6 +64,8 @@ paths and column mappings, and run:
 ```bash
 conversation-measurement-reproduce --config /PRIVATE/PATH/reproduction_config.json
 ```
+
+For a different dataset, also set `"verify_published": false` in that private config.
 
 ## How the column adapter works
 

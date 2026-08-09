@@ -1,7 +1,9 @@
 import json
+import sys
 
 import pandas as pd
 
+import conversation_measurement.reproduce as reproduce_module
 from conversation_measurement.reproduce import reproduce
 
 
@@ -125,3 +127,36 @@ def test_one_command_reproduction_uses_multiple_dataframes(tmp_path) -> None:
     assert (output_dir / "figures" / "survey.pdf").exists()
     assert (output_dir / "tables" / "prom_summary.tex").exists()
     assert (output_dir / "verification" / "reproduction_summary.json").exists()
+
+
+def test_direct_cli_can_skip_published_verification(
+    monkeypatch, tmp_path, capsys
+) -> None:
+    observed_config = {}
+
+    def fake_reproduce(config_path):
+        observed_config.update(json.loads(config_path.read_text(encoding="utf-8")))
+        return {"completed": True}
+
+    monkeypatch.setattr(reproduce_module, "reproduce", fake_reproduce)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "conversation-measurement-reproduce",
+            "--segments",
+            str(tmp_path / "segments.csv"),
+            "--questions",
+            str(tmp_path / "questions.csv"),
+            "--proms",
+            str(tmp_path / "proms.csv"),
+            "--output",
+            str(tmp_path / "outputs"),
+            "--no-verify-published",
+        ],
+    )
+
+    reproduce_module.main()
+
+    assert observed_config["verify_published"] is False
+    assert json.loads(capsys.readouterr().out) == {"completed": True}

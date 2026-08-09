@@ -441,13 +441,20 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--questions", type=Path, help="Questions DataFrame file")
     parser.add_argument("--proms", type=Path, help="PROM DataFrame file")
     parser.add_argument("--output", type=Path, help="Output directory")
+    parser.add_argument(
+        "--no-verify-published",
+        action="store_true",
+        help="Generate outputs without requiring the PROM table to match the paper",
+    )
     return parser
 
 
 def main() -> None:
     args = build_parser().parse_args()
     direct_values = (args.segments, args.questions, args.proms, args.output)
-    if args.config and any(value is not None for value in direct_values):
+    if args.config and (
+        any(value is not None for value in direct_values) or args.no_verify_published
+    ):
         raise SystemExit("use either --config or direct DataFrame flags, not both")
     if args.config:
         summary = reproduce(args.config)
@@ -466,6 +473,7 @@ def main() -> None:
                 "direct reproduction requires " + ", ".join(missing) + "; or use --config"
             )
         direct_config = {
+            "verify_published": not args.no_verify_published,
             "output_dir": str(args.output.resolve()),
             "inputs": {
                 "segments": str(args.segments.resolve()),
