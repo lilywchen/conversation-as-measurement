@@ -15,7 +15,7 @@ generates the main PROM table and all five data-driven figures.
 
 ## 🚀 Quick start
 
-Python 3.10 or 3.11 is required for the locked reproduction environment.
+Python 3.10 or 3.11 is supported.
 
 ```bash
 cd /path/to/conversation-as-measurement
