@@ -110,10 +110,11 @@ study data are not included.
 ├── paper_outputs/                   # Final aggregate paper figures and table
 ├── prompts/                         # Annotation templates and PROM items
 ├── src/conversation_measurement/
-│   ├── metrics.py                   # QWK, MAE, signed error, and faithfulness
+│   ├── metrics.py                   # Trusted metrics plus paper-specific conventions
 │   ├── tables.py                    # Main PROM table
 │   ├── paper_figures/               # Original plotting scripts
-│   ├── reproduce.py                 # One-command pipeline
+│   ├── reproduction_inputs.py       # Config, validation, and column adaptation
+│   ├── reproduce.py                 # CLI and pipeline orchestration
 │   └── verification.py              # Published-result comparison
 ├── tests/                           # Tests using invented data
 ├── reproduction_config.example.json
@@ -123,6 +124,11 @@ study data are not included.
 The exact phase/question prompt, PROM-scoring prompt, and PROM item lists are included
 in [`prompts/`](prompts/). No model client or inference service is required to reproduce
 the tables and figures from existing annotations.
+
+QWK and MAE delegate to scikit-learn's tested implementations. The repository keeps
+only the study-specific behavior around them: filtering missing pairs, rounding
+half-point patient scores upward for QWK, and defining signed error as patient-reported
+minus transcript-derived score.
 
 ## 🧪 Tests
 

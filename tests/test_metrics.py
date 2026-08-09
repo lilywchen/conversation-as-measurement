@@ -26,6 +26,14 @@ def test_qwk_matches_sklearn() -> None:
     expected = cohen_kappa_score(reference, estimate, weights="quadratic")
     assert quadratic_weighted_kappa(reference, estimate) == pytest.approx(expected)
     assert quadratic_weighted_kappa(reference, reference) == pytest.approx(1.0)
+    assert quadratic_weighted_kappa([2, 2], [2, 2]) == pytest.approx(1.0)
+
+
+def test_qwk_filters_missing_pairs_before_calling_sklearn() -> None:
+    reference = [0, 1, 2, 3, 4, None]
+    estimate = [0, 2, 2, 4, 3, 1]
+    expected = cohen_kappa_score(reference[:-1], estimate[:-1], weights="quadratic")
+    assert quadratic_weighted_kappa(reference, estimate) == pytest.approx(expected)
 
 
 def test_qwk_rejects_fractional_or_out_of_range_ratings() -> None:
