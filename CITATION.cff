@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "Conversation as Measurement in Clinical Encounters: Observable Phase Structure, Partially Observable Patient State"
+type: software
+version: 0.1.0
+date-released: 2026-08-09
+repository-code: "https://github.com/lilywchen/conversation-as-measurement"
+authors:
+  - given-names: Lily
+    family-names: Chen
+  - given-names: Ted
+    family-names: Mau
+  - given-names: Michael
+    family-names: Gensheimer
+  - given-names: Brian Anthony
+    family-names: Nuyen
+  - given-names: Nancy
+    family-names: Jiang
+  - given-names: James
+    family-names: Zou

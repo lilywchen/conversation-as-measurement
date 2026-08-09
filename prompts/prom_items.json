@@ -1,0 +1,38 @@
+{
+  "CSI": [
+    "My cough is worse when I lie down.",
+    "My coughing problem causes me to restrict my personal and social life.",
+    "I tend to avoid places because of my cough problem.",
+    "I feel embarrassed because of my coughing problem.",
+    "People ask, \"What's wrong?\" because I cough a lot.",
+    "I run out of air when I cough.",
+    "My coughing problem affects my voice.",
+    "My coughing problem limits my physical activity.",
+    "My coughing problem upsets me.",
+    "People ask me if I am sick because I cough a lot."
+  ],
+  "VHI-10": [
+    "My voice makes it difficult for people to hear me.",
+    "People have difficulty understanding me in a noisy room.",
+    "My voice difficulties restrict personal and social life.",
+    "I feel left out of conversations because of my voice.",
+    "My voice problem causes me to lose income.",
+    "I feel as though I have to strain to produce voice.",
+    "The clarity of my voice is unpredictable.",
+    "My voice problem upsets me.",
+    "My voice makes me feel handicapped.",
+    "People ask, \"What's wrong with your voice?\""
+  ],
+  "EAT-10": [
+    "My swallowing problem has caused me to lose weight.",
+    "My swallowing problem interferes with my ability to go out for meals.",
+    "Swallowing liquids takes extra effort.",
+    "Swallowing solids takes extra effort.",
+    "Swallowing pills takes extra effort.",
+    "Swallowing is painful.",
+    "The pleasure of eating is affected by my swallowing.",
+    "When I swallow food sticks in my throat.",
+    "I cough when I eat.",
+    "Swallowing is stressful."
+  ]
+}

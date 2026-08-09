@@ -1,0 +1,30 @@
+{
+  "verify_published": true,
+  "output_dir": "/ABSOLUTE/PATH/TO/reproduced_outputs",
+  "inputs": {
+    "segments": "/ABSOLUTE/PATH/TO/segments.csv",
+    "questions": "/ABSOLUTE/PATH/TO/questions.csv",
+    "proms": "/ABSOLUTE/PATH/TO/proms_df.csv"
+  },
+  "columns": {
+    "segments": {
+      "encounter": "doc",
+      "phase": "segment_title",
+      "duration": "minutes_diff",
+      "order": "segment_start",
+      "clinician": "clinician"
+    },
+    "questions": {
+      "encounter": "doc",
+      "phase": "segment_title",
+      "speaker": "speaker"
+    },
+    "proms": {
+      "encounter": "doc",
+      "instrument": "Test",
+      "item": "Question",
+      "estimate": "score",
+      "reference": "true_score"
+    }
+  }
+}
