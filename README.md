@@ -1,4 +1,4 @@
-# 📏 Conversation as Measurement
+# 🩺 Conversation as Measurement
 
 Code accompanying the COLM 2026 paper:
 
