@@ -163,7 +163,8 @@ Feel free to cite our paper!
       archivePrefix={arXiv},
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2608.08868}, 
-}```
+}
+```
 
 ## License
 
