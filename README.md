@@ -122,8 +122,7 @@ study data are not included.
 ```
 
 The exact phase/question prompt, PROM-scoring prompt, and PROM item lists are included
-in [`prompts/`](prompts/). No model client or inference service is required to reproduce
-the tables and figures from existing annotations.
+in [`prompts/`](prompts/). 
 
 QWK and MAE delegate to scikit-learn's tested implementations. The repository keeps
 only the study-specific behavior around them: filtering missing pairs, rounding
