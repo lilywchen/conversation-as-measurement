@@ -155,7 +155,8 @@ excerpts, clinician identifiers, credentials, or generated logs. See
 
 Feel free to cite our paper!
 
-```@misc{chen2026conversationmeasurementclinicalencounters,
+```
+@misc{chen2026conversationmeasurementclinicalencounters,
       title={Conversation as Measurement in Clinical Encounters: Observable Phase Structure, Partially Observable Patient State}, 
       author={Lily Chen and Ted Mau and Michael Gensheimer and Brian Anthony Nuyen and Nancy Jiang and James Zou},
       year={2026},
