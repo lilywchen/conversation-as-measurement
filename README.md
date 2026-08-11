@@ -153,8 +153,17 @@ excerpts, clinician identifiers, credentials, or generated logs. See
 
 ## Citation
 
-If you use this repository, please cite the COLM 2026 paper. Citation metadata is
-available in [CITATION.cff](CITATION.cff).
+Feel free to cite our paper!
+
+```@misc{chen2026conversationmeasurementclinicalencounters,
+      title={Conversation as Measurement in Clinical Encounters: Observable Phase Structure, Partially Observable Patient State}, 
+      author={Lily Chen and Ted Mau and Michael Gensheimer and Brian Anthony Nuyen and Nancy Jiang and James Zou},
+      year={2026},
+      eprint={2608.08868},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2608.08868}, 
+}```
 
 ## License
 
